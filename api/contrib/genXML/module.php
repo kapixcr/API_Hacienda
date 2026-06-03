@@ -37,7 +37,7 @@ function genXML_init()
             'access_params' => 'accessName',
             'params' => array(
                 array("key" => "clave", "def" => "", "req" => true),    // d{50,50} equivale a clave en FE
-                array("key" => "codigo_actividad", "def" => "", "req" => true),    // https://cloud-cube.s3.amazonaws.com/sp5z9nxkd1ra/public/assets/json/actividades_por_codigo.json
+                array("key" => "codigo_actividad", "def" => "", "req" => true),    
                 array("key" => "numero_cedula_emisor", "def" => "", "req" => true),    // d{12,12} equivale a emisor_num_identif en FE
                 array("key" => "fecha_emision_doc", "def" => "", "req" => true),    // YYYY-MM-DDThh:mm:ss-06:00 ej: 2018-05-13T15:30:00-06:00
                 array("key" => "mensaje", "def" => "", "req" => true),    // 1 - Aceptado, 2 - Aceptado Parcialmente, 3 - Rechazado
@@ -57,7 +57,7 @@ function genXML_init()
             'params' => array(
                 array("key" => "clave", "def" => "", "req" => true),
                 array("key" => "proveedor_sistemas", "def" => "", "req" => true),
-                array("key" => "codigo_actividad_emisor", "def" => "", "req" => true),    // https://cloud-cube.s3.amazonaws.com/sp5z9nxkd1ra/public/assets/json/actividades_por_codigo.json
+                array("key" => "codigo_actividad_emisor", "def" => "", "req" => true),    
                 array("key" => "codigo_actividad_receptor", "def" => "", "req" => false),
                 array("key" => "consecutivo", "def" => "", "req" => true),
                 array("key" => "fecha_emision", "def" => "", "req" => true),
@@ -76,7 +76,6 @@ function genXML_init()
                 array("key" => "receptor_nombre", "def" => "", "req" => true),
                 array("key" => "receptor_tipo_identif", "def" => "", "req" => true),
                 array("key" => "receptor_num_identif", "def" => "", "req" => true),
-                array("key" => "receptor_identif_extranjero", "def" => "", "req" => false),
                 array("key" => "receptor_nombre_comercial", "def" => "", "req" => false),
                 array("key" => "receptor_provincia", "def" => "", "req" => false),
                 array("key" => "receptor_canton", "def" => "", "req" => false),
@@ -118,7 +117,7 @@ function genXML_init()
                 array("key" => "total_comprobante", "def" => "", "req" => true),
                 array("key" => "otros", "def" => "", "req" => false),
                 array("key" => "detalles", "def" => "", "req" => true),
-                array("key" => "informacion_referencia", "def" => "", "req" => true),
+                array("key" => "informacion_referencia", "def" => "", "req" => false),
                 array("key" => "otrosCargos", "def" => "", "req" => false)
             ),
             'file' => 'genXML.php'
@@ -131,7 +130,7 @@ function genXML_init()
             'params' => array(
                 array("key" => "clave", "def" => "", "req" => true),
                 array("key" => "proveedor_sistemas", "def" => "", "req" => true),
-                array("key" => "codigo_actividad_emisor", "def" => "", "req" => true),    // https://cloud-cube.s3.amazonaws.com/sp5z9nxkd1ra/public/assets/json/actividades_por_codigo.json
+                array("key" => "codigo_actividad_emisor", "def" => "", "req" => true),    
                 array("key" => "codigo_actividad_receptor", "def" => "", "req" => false),
                 array("key" => "consecutivo", "def" => "", "req" => true),
                 array("key" => "fecha_emision", "def" => "", "req" => true),
@@ -151,7 +150,6 @@ function genXML_init()
                 array("key" => "receptor_nombre", "def" => "", "req" => false),
                 array("key" => "receptor_tipo_identif", "def" => "", "req" => false),
                 array("key" => "receptor_num_identif", "def" => "", "req" => false),
-                array("key" => "receptor_identif_extranjero", "def" => "", "req" => false),
                 array("key" => "receptor_nombre_comercial", "def" => "", "req" => false),
                 array("key" => "receptor_provincia", "def" => "", "req" => false),
                 array("key" => "receptor_canton", "def" => "", "req" => false),
@@ -206,7 +204,7 @@ function genXML_init()
             'params' => array(
                 array("key" => "clave", "def" => "", "req" => true),
                 array("key" => "proveedor_sistemas", "def" => "", "req" => true),
-                array("key" => "codigo_actividad_emisor", "def" => "", "req" => true),    // https://cloud-cube.s3.amazonaws.com/sp5z9nxkd1ra/public/assets/json/actividades_por_codigo.json
+                array("key" => "codigo_actividad_emisor", "def" => "", "req" => true),    
                 array("key" => "codigo_actividad_receptor", "def" => "", "req" => false),
                 array("key" => "consecutivo", "def" => "", "req" => true),
                 array("key" => "fecha_emision", "def" => "", "req" => true),
@@ -226,7 +224,6 @@ function genXML_init()
                 array("key" => "receptor_nombre", "def" => "", "req" => false),
                 array("key" => "receptor_tipo_identif", "def" => "", "req" => false),
                 array("key" => "receptor_num_identif", "def" => "", "req" => false),
-                array("key" => "receptor_identif_extranjero", "def" => "", "req" => false),
                 array("key" => "receptor_nombre_comercial", "def" => "", "req" => false),
                 array("key" => "receptor_provincia", "def" => "", "req" => false),
                 array("key" => "receptor_canton", "def" => "", "req" => false),
@@ -281,7 +278,7 @@ function genXML_init()
             'params' => array(
                 array("key" => "clave", "def" => "", "req" => true),
                 array("key" => "proveedor_sistemas", "def" => "", "req" => true),
-                array("key" => "codigo_actividad_emisor", "def" => "", "req" => true),    // https://cloud-cube.s3.amazonaws.com/sp5z9nxkd1ra/public/assets/json/actividades_por_codigo.json
+                array("key" => "codigo_actividad_emisor", "def" => "", "req" => true),    
                 array("key" => "consecutivo", "def" => "", "req" => true),
                 array("key" => "fecha_emision", "def" => "", "req" => true),
                 array("key" => "emisor_nombre", "def" => "", "req" => true),
@@ -300,7 +297,6 @@ function genXML_init()
                 array("key" => "receptor_nombre", "def" => "", "req" => false),
                 array("key" => "receptor_tipo_identif", "def" => "", "req" => false),
                 array("key" => "receptor_num_identif", "def" => "", "req" => false),
-                array("key" => "receptor_identif_extranjero", "def" => "", "req" => false),
                 array("key" => "receptor_nombre_comercial", "def" => "", "req" => false),
                 array("key" => "receptor_provincia", "def" => "", "req" => false),
                 array("key" => "receptor_canton", "def" => "", "req" => false),
@@ -342,7 +338,7 @@ function genXML_init()
                 array("key" => "otros", "def" => "", "req" => false),
                 array("key" => "otrosType", "def" => "", "req" => false),
                 array("key" => "detalles", "def" => "", "req" => true),
-                array("key" => "informacion_referencia", "def" => "", "req" => true),
+                array("key" => "informacion_referencia", "def" => "", "req" => false),
                 array("key" => "otrosCargos", "def" => "", "req" => false)
             ),
             'file' => 'genXML.php'
@@ -355,7 +351,7 @@ function genXML_init()
             'params' => array(
                 array("key" => "clave", "def" => "", "req" => true),
                 array("key" => "proveedor_sistemas", "def" => "", "req" => true),
-                array("key" => "codigo_actividad_emisor", "def" => "", "req" => false),    // https://cloud-cube.s3.amazonaws.com/sp5z9nxkd1ra/public/assets/json/actividades_por_codigo.json
+                array("key" => "codigo_actividad_emisor", "def" => "", "req" => false),    
                 array("key" => "codigo_actividad_receptor", "def" => "", "req" => true),
                 array("key" => "consecutivo", "def" => "", "req" => true),
                 array("key" => "fecha_emision", "def" => "", "req" => true),
@@ -375,7 +371,6 @@ function genXML_init()
                 array("key" => "receptor_nombre", "def" => "", "req" => true),
                 array("key" => "receptor_tipo_identif", "def" => "", "req" => true),
                 array("key" => "receptor_num_identif", "def" => "", "req" => true),
-                array("key" => "receptor_identif_extranjero", "def" => "", "req" => false),
                 array("key" => "receptor_nombre_comercial", "def" => "", "req" => false),
                 array("key" => "receptor_provincia", "def" => "", "req" => false),
                 array("key" => "receptor_canton", "def" => "", "req" => false),
@@ -446,7 +441,6 @@ function genXML_init()
                 array("key" => "receptor_nombre", "def" => "", "req" => false),
                 array("key" => "receptor_tipo_identif", "def" => "", "req" => true),
                 array("key" => "receptor_num_identif", "def" => "", "req" => true),
-                array("key" => "receptor_identif_extranjero", "def" => "", "req" => false),
                 array("key" => "receptor_nombre_comercial", "def" => "", "req" => false),
                 array("key" => "receptor_otras_senas_extranjero", "def" => "", "req" => false),
                 array("key" => "receptor_cod_pais_tel", "def" => "", "req" => false),
@@ -456,7 +450,7 @@ function genXML_init()
                 array("key" => "condicion_venta", "def" => "", "req" => true),
                 array("key" => "condicion_venta_otros", "def" => "", "req" => false),
                 array("key" => "plazo_credito", "def" => "", "req" => false),
-                array("key" => "medio_pago", "def" => "", "req" => false),
+                array("key" => "medios_pago", "def" => "", "req" => false),
                 array("key" => "detalles", "def" => "", "req" => true),
                 array("key" => "otrosCargos", "def" => "", "req" => false),
                 array("key" => "cod_moneda", "def" => "", "req" => true),
@@ -475,7 +469,7 @@ function genXML_init()
                 array("key" => "total_impuestos_asumidos_fabrica", "def" => "", "req" => false),
                 array("key" => "totalOtrosCargos", "def" => "", "req" => false),
                 array("key" => "total_comprobante", "def" => "", "req" => true),
-                array("key" => "informacion_referencia", "def" => "", "req" => true),
+                array("key" => "informacion_referencia", "def" => "", "req" => false),
                 array("key" => "otros", "def" => "", "req" => false)
             ),
             'file' => 'genXML.php'

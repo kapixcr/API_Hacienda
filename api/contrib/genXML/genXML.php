@@ -40,7 +40,7 @@ function genXMLFe()
     // Datos contribuyente
     $clave = params_get("clave");
     $proveedorSistemas = params_get("proveedor_sistemas");
-    $codigoActividadEmisor = params_get("codigo_actividad_emisor");        // https://cloud-cube.s3.amazonaws.com/sp5z9nxkd1ra/public/assets/json/actividades_por_codigo.json
+    $codigoActividadEmisor = params_get("codigo_actividad_emisor");        
     $codigoActividadReceptor = params_get("codigo_actividad_receptor");
     $consecutivo = params_get("consecutivo");
     $fechaEmision = params_get("fecha_emision");
@@ -65,7 +65,6 @@ function genXMLFe()
     $receptorNombre = params_get("receptor_nombre");
     $receptorTipoIdentif = params_get("receptor_tipo_identif");
     $receptorNumIdentif = params_get("receptor_num_identif");
-    $receptorIdentifExtranjero = params_get("receptor_identif_extranjero");
     $receptorNombreComercial = params_get("receptor_nombre_comercial");
     $receptorProvincia = params_get("receptor_provincia");
     $receptorCanton = params_get("receptor_canton");
@@ -238,13 +237,6 @@ function genXMLFe()
             <Tipo>' . $receptorTipoIdentif . '</Tipo>
             <Numero>' . $receptorNumIdentif . '</Numero>
         </Identificacion>';
-
-    if ($receptorIdentifExtranjero != '' && $receptorIdentifExtranjero != '') {
-        $xmlString .= '
-            <IdentificacionExtranjero>'
-            . $receptorIdentifExtranjero .
-            '</IdentificacionExtranjero>';
-    }
 
     if (isset($receptorNombreComercial) && $receptorNombreComercial != "") {
         $xmlString .= '
@@ -430,8 +422,17 @@ function genXMLFe()
       }
     ]
      */
+
     $l = 1;
+    
     foreach ($detalles as $d) {
+
+        foreach (["codigoCABYS","subTotal","impuestoAsumidoEmisorFabrica","impuestoNeto"] as $requiredField) {
+            if (!isset($d->{$requiredField}) || $d->{$requiredField} === '') {
+                tools_reply("Se requiere el campo $requiredField en el detalle #$l", true);
+            }
+        }
+
         $xmlString .= '
         <LineaDetalle>
             <NumeroLinea>' . $l . '</NumeroLinea>';
@@ -1033,7 +1034,7 @@ function genXMLNC()
     // Datos contribuyente
     $clave = params_get("clave");
     $proveedorSistemas = params_get("proveedor_sistemas");
-    $codigoActividadEmisor = params_get("codigo_actividad_emisor");        // https://cloud-cube.s3.amazonaws.com/sp5z9nxkd1ra/public/assets/json/actividades_por_codigo.json
+    $codigoActividadEmisor = params_get("codigo_actividad_emisor");        
     $codigoActividadReceptor = params_get("codigo_actividad_receptor");
     $consecutivo = params_get("consecutivo");
     $fechaEmision = params_get("fecha_emision");
@@ -1058,7 +1059,6 @@ function genXMLNC()
     $receptorNombre = params_get("receptor_nombre");
     $receptorTipoIdentif = params_get("receptor_tipo_identif");
     $receptorNumIdentif = params_get("receptor_num_identif");
-    $receptorIdentifExtranjero = params_get("receptor_identif_extranjero");
     $receptorNombreComercial = params_get("receptor_nombre_comercial");
     $receptorProvincia = params_get("receptor_provincia");
     $receptorCanton = params_get("receptor_canton");
@@ -1230,13 +1230,6 @@ function genXMLNC()
                 <Tipo>' . $receptorTipoIdentif . '</Tipo>
                 <Numero>' . $receptorNumIdentif . '</Numero>
             </Identificacion>';
-        }
-
-        if ($receptorIdentifExtranjero != '' && $receptorIdentifExtranjero != '') {
-            $xmlString .= '
-            <IdentificacionExtranjero>'
-                . $receptorIdentifExtranjero .
-                '</IdentificacionExtranjero>';
         }
 
         if (isset($receptorNombreComercial) && $receptorNombreComercial != "") {
@@ -1921,7 +1914,7 @@ function genXMLND()
     // Datos contribuyente
     $clave = params_get("clave");
     $proveedorSistemas = params_get("proveedor_sistemas");
-    $codigoActividadEmisor = params_get("codigo_actividad_emisor");        // https://cloud-cube.s3.amazonaws.com/sp5z9nxkd1ra/public/assets/json/actividades_por_codigo.json
+    $codigoActividadEmisor = params_get("codigo_actividad_emisor");        
     $codigoActividadReceptor = params_get("codigo_actividad_receptor");
     $consecutivo = params_get("consecutivo");
     $fechaEmision = params_get("fecha_emision");
@@ -1946,7 +1939,6 @@ function genXMLND()
     $receptorNombre = params_get("receptor_nombre");
     $receptorTipoIdentif = params_get("receptor_tipo_identif");
     $receptorNumIdentif = params_get("receptor_num_identif");
-    $receptorIdentifExtranjero = params_get("receptor_identif_extranjero");
     $receptorNombreComercial = params_get("receptor_nombre_comercial");
     $receptorProvincia = params_get("receptor_provincia");
     $receptorCanton = params_get("receptor_canton");
@@ -2116,13 +2108,6 @@ function genXMLND()
                 <Tipo>' . $receptorTipoIdentif . '</Tipo>
                 <Numero>' . $receptorNumIdentif . '</Numero>
             </Identificacion>';
-        }
-
-        if ($receptorIdentifExtranjero != '' && $receptorIdentifExtranjero != '') {
-            $xmlString .= '
-            <IdentificacionExtranjero>'
-                . $receptorIdentifExtranjero .
-                '</IdentificacionExtranjero>';
         }
 
         if (isset($receptorNombreComercial) && $receptorNombreComercial != "") {
@@ -2807,7 +2792,7 @@ function genXMLTE()
     // Datos contribuyente
     $clave = params_get("clave");
     $proveedorSistemas = params_get("proveedor_sistemas");
-    $codigoActividadEmisor = params_get("codigo_actividad_emisor");        // https://cloud-cube.s3.amazonaws.com/sp5z9nxkd1ra/public/assets/json/actividades_por_codigo.json
+    $codigoActividadEmisor = params_get("codigo_actividad_emisor");        
     $consecutivo = params_get("consecutivo");
     $fechaEmision = params_get("fecha_emision");
 
@@ -2831,7 +2816,6 @@ function genXMLTE()
     $receptorNombre = params_get("receptor_nombre");
     $receptorTipoIdentif = params_get("receptor_tipo_identif");
     $receptorNumIdentif = params_get("receptor_num_identif");
-    $receptorIdentifExtranjero = params_get("receptor_identif_extranjero");
     $receptorNombreComercial = params_get("receptor_nombre_comercial");
     $receptorProvincia = params_get("receptor_provincia");
     $receptorCanton = params_get("receptor_canton");
@@ -2994,13 +2978,6 @@ function genXMLTE()
                 <Tipo>' . $receptorTipoIdentif . '</Tipo>
                 <Numero>' . $receptorNumIdentif . '</Numero>
             </Identificacion>';
-        }
-
-        if ($receptorIdentifExtranjero != '' && $receptorIdentifExtranjero != '') {
-            $xmlString .= '
-            <IdentificacionExtranjero>'
-                . $receptorIdentifExtranjero .
-                '</IdentificacionExtranjero>';
         }
 
         if (isset($receptorNombreComercial) && $receptorNombreComercial != "") {
@@ -3684,7 +3661,7 @@ function genXMLMr()
     $mensaje = params_get("mensaje");                                    // 1 - Aceptado, 2 - Aceptado Parcialmente, 3 - Rechazado
     $detalleMensaje = params_get("detalle_mensaje");
     $montoTotalImpuesto = params_get("monto_total_impuesto");                       // d18,5 opcional /obligatorio si comprobante tenga impuesto
-    $codigoActividad = params_get("codigo_actividad");                            // https://cloud-cube.s3.amazonaws.com/sp5z9nxkd1ra/public/assets/json/actividades_por_codigo.json
+    $codigoActividad = params_get("codigo_actividad");                            
     $totalFactura = params_get("total_factura");                              // d18,5
     $numeroConsecutivoReceptor = params_get("numero_consecutivo_receptor");                // d{20,20} numeracion consecutiva de los mensajes de confirmacion
 
@@ -3733,7 +3710,7 @@ function genXMLFec()
     // Datos contribuyente
     $clave = params_get("clave");
     $proveedorSistemas = params_get("proveedor_sistemas");
-    $codigoActividadEmisor = params_get("codigo_actividad_emisor");        // https://cloud-cube.s3.amazonaws.com/sp5z9nxkd1ra/public/assets/json/actividades_por_codigo.json
+    $codigoActividadEmisor = params_get("codigo_actividad_emisor");        
     $codigoActividadReceptor = params_get("codigo_actividad_receptor");
     $consecutivo = params_get("consecutivo");
     $fechaEmision = params_get("fecha_emision");
@@ -3759,7 +3736,6 @@ function genXMLFec()
     $receptorNombre = params_get("receptor_nombre");
     $receptorTipoIdentif = params_get("receptor_tipo_identif");
     $receptorNumIdentif = params_get("receptor_num_identif");
-    $receptorIdentifExtranjero = params_get("receptor_identif_extranjero");
     $receptorNombreComercial = params_get("receptor_nombre_comercial");
     $receptorProvincia = params_get("receptor_provincia");
     $receptorCanton = params_get("receptor_canton");
@@ -3930,13 +3906,6 @@ function genXMLFec()
             <Tipo>' . $receptorTipoIdentif . '</Tipo>
             <Numero>' . $receptorNumIdentif . '</Numero>
         </Identificacion>';
-
-    if ($receptorIdentifExtranjero != '' && $receptorIdentifExtranjero != '') {
-        $xmlString .= '
-            <IdentificacionExtranjero>'
-            . $receptorIdentifExtranjero .
-            '</IdentificacionExtranjero>';
-    }
 
     if (isset($receptorNombreComercial) && $receptorNombreComercial != "") {
         $xmlString .= '
@@ -4481,7 +4450,7 @@ function genXMLFee()
 {
     $clave = params_get("clave");
     $proveedorSistemas = params_get("proveedor_sistemas");
-    $codigoActividadEmisor = params_get("codigo_actividad_emisor");        // https://cloud-cube.s3.amazonaws.com/sp5z9nxkd1ra/public/assets/json/actividades_por_codigo.json
+    $codigoActividadEmisor = params_get("codigo_actividad_emisor");        
     $consecutivo = params_get("consecutivo");
     $fechaEmision = params_get("fecha_emision");
 
@@ -4502,7 +4471,6 @@ function genXMLFee()
     $receptorNombre = params_get("receptor_nombre");
     $receptorTipoIdentif = params_get("receptor_tipo_identif");
     $receptorNumIdentif = params_get("receptor_num_identif");
-    $receptorIdentifExtranjero = params_get("receptor_identif_extranjero");
     $receptorNombreComercial = params_get("receptor_nombre_comercial");
     $receptorOtrasSenasExtranjero = params_get("receptor_otras_senas_extranjero");
     $receptorCodPaisTel = params_get("receptor_cod_pais_tel");
@@ -4533,6 +4501,8 @@ function genXMLFee()
 
     $informacionReferencia = json_decode(params_get("informacion_referencia"));
     $otros = json_decode(params_get('otros'));
+    $mediosPago = json_decode(params_get("medios_pago"));
+
     // Resumen
     $totalDesgloseImpuesto = json_decode(params_get("totalDesgloseImpuesto"));
 
@@ -4638,13 +4608,6 @@ function genXMLFee()
             <Tipo>' . $receptorTipoIdentif . '</Tipo>
             <Numero>' . $receptorNumIdentif . '</Numero>
         </Identificacion>';
-    }
-
-    if ($receptorIdentifExtranjero != '' && $receptorIdentifExtranjero != '') {
-        $xmlString .= '
-        <IdentificacionExtranjero>'
-            . $receptorIdentifExtranjero .
-            '</IdentificacionExtranjero>';
     }
 
     if (isset($receptorNombreComercial) && $receptorNombreComercial != "") {
